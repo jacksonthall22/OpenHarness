@@ -12,13 +12,13 @@ A harness exists because coding agents can only reliably use context that is dis
 
 The harness turns that constraint into an engineering practice. It converts an empty Git repository into a self-propagating working environment: a small set of root instructions, indexed durable docs, discoverable commands, policies, templates, checks, and knowledge-ingestion paths that preserve what future agents need to know.
 
-This work is not optional polish. In agentic development, repository hygiene, command consistency, guardrails, tests, architecture notes, and durable context are the infrastructure that lets agents move quickly without constant human correction. The harness is the layer that makes later application work safe to delegate.
+This work is REQUIRED, not polish. In agentic development, repository hygiene, command consistency, guardrails, tests, architecture notes, and durable context are the infrastructure that lets agents move quickly without constant human correction. The harness is the layer that makes later application work safe to delegate.
 
-A coding agent should be able to receive this file in an empty Git repository and create the initial harness commit without needing any prior chat history, external prompt, meeting notes, or unstored context. A future human or agent should then be able to clone the resulting repository, read only the committed files, and understand how to maintain and evolve the harness.
+A coding agent SHOULD be able to receive this file in an empty Git repository and create the initial harness commit without needing any prior chat history, external prompt, meeting notes, or unstored context. A future human or agent SHOULD then be able to clone the resulting repository, read only the committed files, and understand how to maintain and evolve the harness.
 
 This file is both:
 
-1. A normative repository artifact that must be committed to the repository root as `spec.md`.
+1. A normative repository artifact that MUST be committed to the repository root as `spec.md`.
 2. A prompt-like initialization contract that can be reused to create the first commit of future repositories.
 
 The harness is not application code, a framework choice, a project-management system, or an agent orchestrator. It is the repository-local contract around future application code: the substrate that makes all later work discoverable, scoped, reviewable, testable, and recoverable.
@@ -34,7 +34,7 @@ At minimum, the harness tells humans and agents:
 - where to start;
 - what rules govern the repository;
 - what commands prove a change is correct;
-- what boundaries must not be crossed;
+- what boundaries MUST NOT be crossed;
 - what business, product, architecture, operational, support, design, security, and domain context matters;
 - where that context lives;
 - how to discover context progressively instead of reading a giant manual;
@@ -50,13 +50,13 @@ At minimum, the harness tells humans and agents:
 
 The harness is:
 
-- **A root contract**: `spec.md` defines the normative rules and required starter shape.
+- **A root contract**: `spec.md` defines the normative rules and REQUIRED starter shape.
 - **An agent map**: `AGENTS.md` stays short and points agents to the right durable docs, commands, plans, and policies.
 - **Durable memory**: `docs/` stores project context, decisions, command definitions, policies, quality rules, plans, and known risks.
 - **A command surface**: `docs/commands.md` tells agents how to set up, validate, test, build, inspect, repair, and maintain the repository.
 - **A knowledge-ingestion loop**: external or tacit knowledge that future work depends on is summarized, cited when safe, indexed, and committed in the right place.
 - **A feedback loop**: when agents fail because context, tools, checks, boundaries, or instructions were missing, the repository is updated so the next agent naturally discovers the fix.
-- **A specialization scaffold**: the harness does not choose a language, framework, package manager, CI vendor, cloud provider, product domain, or deployment model up front, but it defines how those choices must be introduced and documented later.
+- **A specialization scaffold**: the harness does not choose a language, framework, package manager, CI vendor, cloud provider, product domain, or deployment model up front, but it defines how those choices MUST be introduced and documented later.
 
 ### 2.2 What the harness is not
 
@@ -75,7 +75,7 @@ The harness is not:
 - a dashboard;
 - a replacement for human review or judgment.
 
-Those systems may use the harness, but they are not the harness. The harness remains repository-local and must still make sense when read from a fresh clone.
+Those systems MAY use the harness, but they are not the harness. The harness remains repository-local and MUST still make sense when read from a fresh clone.
 
 ### 2.3 Core operating premise
 
@@ -94,7 +94,7 @@ Correcting one agent run without updating the repository is not enough when the 
 
 ### 2.4 Boundary with external automation
 
-The harness may be ready for external automation by exposing stable repository-local interfaces: docs, command names, checklists, templates, status files, and validation commands. It must not depend on any external orchestrator for its own meaning.
+The harness MAY be ready for external automation by exposing stable repository-local interfaces: docs, command names, checklists, templates, status files, and validation commands. It MUST NOT depend on any external orchestrator for its own meaning.
 
 The harness is in scope for this specification. The following are out of scope for the harness itself:
 
@@ -121,16 +121,16 @@ behavior.
 
 Status: Concrete Now
 
-Every harness concern is classified so agents can distinguish what must exist on day one from what must be specialized later.
+Every harness concern is classified so agents can distinguish what MUST exist on day one from what MUST be specialized later.
 
 ### 4.1 Classifications
 
-- **Concrete Now**: must exist in the initial empty-repository harness as actual files, directories, commands, policies, templates, or checks.
-- **Persisted Guidance Now**: must be saved in durable repository files so future agents can maintain the harness without access to the original prompt or chat.
-- **Meta-Specified Now**: must be specified immediately as a decision process, template, or invariant, but cannot be fully instantiated until the repository chooses a language, product domain, deployment model, business domain, or team structure.
-- **Conditional Module**: required only when the repository gains a capability such as deployable services, public APIs, database migrations, generated code, data pipelines, regulated secrets, multiple packages, release artifacts, support workflows, or operational runbooks.
+- **Concrete Now**: MUST exist in the initial empty-repository harness as actual files, directories, commands, policies, templates, or checks.
+- **Persisted Guidance Now**: MUST be saved in durable repository files so future agents can maintain the harness without access to the original prompt or chat.
+- **Meta-Specified Now**: MUST be specified immediately as a decision process, template, or invariant, but cannot be fully instantiated until the repository chooses a language, product domain, deployment model, business domain, or team structure.
+- **Conditional Module**: REQUIRED only when the repository gains a capability such as deployable services, public APIs, database migrations, generated code, data pipelines, regulated secrets, multiple packages, release artifacts, support workflows, or operational runbooks.
 - **Knowledge-Ingestion Requirement**: governs how external or tacit knowledge is converted into versioned, discoverable, repository-local context.
-- **Control-Plane Boundary**: relevant to agentic workflows, but belongs above the repository harness and must not be implemented as part of the harness.
+- **Control-Plane Boundary**: relevant to agentic workflows, but belongs above the repository harness and MUST NOT be implemented as part of the harness.
 - **Out of Scope**: not appropriate for this harness.
 
 ### 4.2 Concern Classification Table
@@ -187,7 +187,7 @@ Status: Concrete Now
 
 `spec.md` is the root normative harness contract. It MUST be committed in the repository root in the initial commit.
 
-The repository MUST NOT rely on chat history, unstored prompts, private notebooks, external docs, meeting notes, or human memory for any rule required to maintain the harness.
+The repository MUST NOT rely on chat history, unstored prompts, private notebooks, external docs, meeting notes, or human memory for any rule REQUIRED to maintain the harness.
 
 When a future-critical rule is discovered, it MUST be promoted into one of:
 
@@ -214,7 +214,7 @@ The agent MUST then create the initial commit shape listed in Section 18. It MUS
 - coverage classification;
 - persistence rules;
 - repository knowledge rules;
-- required initial file tree;
+- REQUIRED initial file tree;
 - rules for future specialization;
 - acceptance criteria for the harness.
 
@@ -280,7 +280,7 @@ If `spec.md` becomes too large for routine agent context, it MAY be decomposed i
 3. each delegated document states its status, owner, and scope;
 4. the root contract says which delegated document governs each topic;
 5. `AGENTS.md` points agents to the root contract and index, not to an uncatalogued pile of files;
-6. mechanical checks verify required delegated files exist.
+6. mechanical checks verify REQUIRED delegated files exist.
 
 ## 6. Repository Knowledge Model
 
@@ -311,8 +311,8 @@ When relevant knowledge originates outside the repository, the agent or human MU
 
 - durable context that future work will need;
 - temporary task context that expires after the current change;
-- sensitive information that must not be committed;
-- irrelevant information that should not enter the harness.
+- sensitive information that MUST NOT be committed;
+- irrelevant information that SHOULD NOT enter the harness.
 
 Durable context MUST be summarized into the appropriate repository file. The summary MUST include:
 
@@ -337,7 +337,7 @@ The repository MUST avoid giant manuals. Use maps and indexes:
 - Each directory with durable process meaning SHOULD include a `README.md`.
 - Long context docs SHOULD begin with a short “When to read this” section.
 
-Agents should start from the smallest relevant map, then follow links only as needed.
+Agents SHOULD start from the smallest relevant map, then follow links only as needed.
 
 ### 6.4 Verification status
 
@@ -371,7 +371,7 @@ If an agent fails because it lacked context, guessed an interface, crossed a bou
 
 Correcting only the current run is not enough when the same missing context could affect future runs.
 
-## 7. Required Initial Repository Shape
+## 7. Initial Repository Shape
 
 Status: Concrete Now
 
@@ -469,7 +469,7 @@ Empty-repo output: this file.
 
 Persistent artifact: `spec.md`.
 
-Update trigger: changes to harness philosophy, required structure, classifications, persistence model, knowledge model, acceptance checklist, or initial commit blueprint.
+Update trigger: changes to harness philosophy, REQUIRED structure, classifications, persistence model, knowledge model, acceptance checklist, or initial commit blueprint.
 
 ### 8.4 `.editorconfig`, `.gitattributes`, `.gitignore`
 
@@ -545,8 +545,8 @@ Each command entry MUST include:
 - working directory;
 - prerequisites;
 - expected runtime;
-- whether network is required;
-- whether secrets are required;
+- whether network is REQUIRED;
+- whether secrets are REQUIRED;
 - safe sandbox/approval expectation;
 - when to run it;
 - what success means;
@@ -626,9 +626,9 @@ Requirements:
 - secrets MUST NOT be committed;
 - local environment files MUST be ignored unless they are safe examples;
 - agents MUST NOT exfiltrate secrets or inspect local private material unless explicitly authorized;
-- destructive commands require explicit human approval;
-- network access is denied by default unless a documented command requires it;
-- security assumptions must be written down and updated when capabilities change.
+- destructive commands MUST have explicit human approval;
+- network access MUST be denied by default unless a documented command needs it;
+- security assumptions MUST be written down and updated when capabilities change.
 
 ### 13.2 Configuration
 
@@ -638,9 +638,9 @@ Requirements:
 
 - application code MUST treat process environment as read-only input;
 - configuration values SHOULD be parsed once at a boundary into typed or structured configuration objects when the chosen language supports it;
-- `.env.example` or equivalent MUST be added when environment variables become required;
-- defaults, required variables, and secret status MUST be documented;
-- no library code should mutate global process environment at import/load time.
+- `.env.example` or equivalent MUST be added when environment variables become REQUIRED;
+- defaults, REQUIRED variables, and secret status MUST be documented;
+- library code SHOULD NOT mutate global process environment at import/load time.
 
 ### 13.3 Dependencies
 
@@ -648,7 +648,7 @@ Persistent artifact: `docs/policies/dependencies.md`.
 
 Requirements:
 
-- production dependencies require a stated reason;
+- production dependencies MUST have a stated reason;
 - dependency managers and lockfiles MUST be documented once chosen;
 - new dependencies SHOULD be evaluated for maintenance status, license, security risk, transitive footprint, and agent legibility;
 - opaque dependencies SHOULD be wrapped behind clear repository-local interfaces.
@@ -663,7 +663,7 @@ Requirements:
 - every validation command MUST be registered in `docs/commands.md`;
 - tests SHOULD be arranged by scope once code exists: unit, integration, contract, end-to-end, smoke, regression;
 - fixtures MUST be documented when non-obvious;
-- golden/snapshot tests require an update procedure;
+- golden/snapshot tests MUST have an update procedure;
 - external input boundaries SHOULD parse untrusted data into precise internal representations before business logic acts on it.
 
 ### 13.5 Documentation
@@ -672,11 +672,11 @@ Persistent artifact: `docs/policies/documentation.md`.
 
 Requirements:
 
-- docs must be discoverable from `docs/index.md`;
-- docs must distinguish durable context from temporary notes;
-- stale docs must be marked stale or updated;
-- removed behavior must remove or update its docs;
-- large docs should include a summary and “when to read this” section.
+- docs MUST be discoverable from `docs/index.md`;
+- docs MUST distinguish durable context from temporary notes;
+- stale docs MUST be marked stale or updated;
+- removed behavior MUST remove or update its docs;
+- large docs SHOULD include a summary and “when to read this” section.
 
 ### 13.6 Knowledge ingestion
 
@@ -684,10 +684,10 @@ Persistent artifact: `docs/policies/knowledge-ingestion.md`.
 
 Requirements:
 
-- durable external context must become safe repository-local summaries;
-- sensitive information must be redacted or referenced by authorized access path;
-- source, date, owner, freshness, and verification status must be recorded;
-- repeated missing-context failures must trigger a doc, command, policy, template, or check update.
+- durable external context MUST become safe repository-local summaries;
+- sensitive information MUST be redacted or referenced by authorized access path;
+- source, date, owner, freshness, and verification status MUST be recorded;
+- repeated missing-context failures MUST trigger a doc, command, policy, template, or check update.
 
 ### 13.7 Generated files
 
@@ -695,10 +695,10 @@ Persistent artifact: `docs/policies/generated-files.md`.
 
 Requirements:
 
-- generated files must be clearly marked;
-- their generator command must be registered;
-- generated outputs should not be edited manually unless the policy explicitly permits it;
-- generated references intended for agents should be kept concise and regenerated when sources change.
+- generated files MUST be clearly marked;
+- their generator command MUST be registered;
+- generated outputs SHOULD NOT be edited manually unless the policy explicitly permits it;
+- generated references intended for agents SHOULD be kept concise and regenerated when sources change.
 
 ## 14. Architecture and Boundary Rules
 
@@ -726,12 +726,16 @@ The repository SHOULD prefer explicit contracts at boundaries. External inputs S
 
 Status: Persisted Guidance Now
 
-The harness assumes agents may run in sandboxes with approval controls, but it does not require a specific agent runtime.
+The harness assumes agents MAY run in sandboxes with approval controls, but it does not mandate a specific agent runtime.
+
+The specific agent runtime, sandbox, approval, and operator-confirmation posture are
+`Implementation-defined`; repository guidance MUST document the selected behavior before agents
+rely on it.
 
 Repository guidance MUST make these boundaries explicit:
 
-- agents may read repository files needed for the task;
-- agents may edit files inside the repository workspace unless a policy says otherwise;
+- agents MAY read repository files needed for the task;
+- agents MAY edit files inside the repository workspace unless a policy says otherwise;
 - agents MUST NOT edit files outside the repository without explicit human approval;
 - agents MUST NOT read or print secrets;
 - agents MUST NOT run destructive commands unless explicitly authorized;
@@ -748,8 +752,8 @@ Status: Concrete Now for starter check; Meta-Specified Now for future checks
 
 The initial harness MUST include `scripts/check-harness.sh`. It SHOULD verify at least:
 
-- required files exist;
-- required directories exist;
+- REQUIRED files exist;
+- REQUIRED directories exist;
 - `AGENTS.md` is present and not excessively large;
 - `docs/index.md` and `docs/commands.md` are present;
 - `spec.md` is present;
@@ -769,7 +773,7 @@ As the repository matures, mechanical checks SHOULD be added for:
 - unowned docs;
 - missing decision records for major changes.
 
-Mechanical checks should emit remediation instructions that tell future agents exactly which file to update.
+Mechanical checks SHOULD emit remediation instructions that tell future agents exactly which file to update.
 
 ## 17. Harness Health and Drift Cleanup
 
@@ -797,11 +801,11 @@ When drift is found, agents SHOULD fix the smallest durable source of the drift,
 
 Status: Concrete Now
 
-The first commit MUST create the following files. “Routine read” means agents should read it often at task start. “Relevant read” means agents should read it only when the task touches that area.
+The first commit MUST create the following files. “Routine read” means agents SHOULD read it often at task start. “Relevant read” means agents SHOULD read it only when the task touches that area.
 
 | Path | Role | Kind | Update when | Agent read | Stores |
 |---|---|---|---|---|---|
-| `spec.md` | Root harness contract | Normative | harness rules, coverage model, persistence model, knowledge model, required tree, acceptance criteria change | Relevant read; routine for harness work | normative harness rules |
+| `spec.md` | Root harness contract | Normative | harness rules, coverage model, persistence model, knowledge model, REQUIRED tree, acceptance criteria change | Relevant read; routine for harness work | normative harness rules |
 | `AGENTS.md` | Short agent map | Navigational | important entrypoints, forbidden actions, command discovery, done criteria, or plan rules change | Routine read | navigational guidance |
 | `README.md` | Human entrypoint | Navigational | repository purpose, setup, status, or primary commands change | Routine read for humans; relevant for agents | durable overview |
 | `docs/index.md` | Documentation map | Navigational | docs are added, removed, renamed, split, deprecated, or status changes | Routine read | durable doc index |
@@ -833,7 +837,7 @@ The first commit MUST create the following files. “Routine read” means agent
 | `docs/quality/harness-health.md` | Harness maturity and gaps | Context / checklist | checks, maturity, gaps, or harness risks change | Relevant read | durable harness status |
 | `docs/quality/failure-feedback.md` | Agent failure loop | Policy / log | repeated agent failure patterns or remediations occur | Relevant read after failures | durable feedback memory |
 | `scripts/README.md` | Script directory policy | Policy | scripts are added or script conventions change | Relevant read | script rules |
-| `scripts/check-harness.sh` | Starter harness health check | Mechanical check | required files or harness checks change | Executed, not usually read | executable verification |
+| `scripts/check-harness.sh` | Starter harness health check | Mechanical check | REQUIRED files or harness checks change | Executed, not usually read | executable verification |
 | `.editorconfig` | Editor defaults | Policy/config | file formats or language-specific conventions change | Not routine | formatting defaults |
 | `.gitattributes` | Git text normalization | Policy/config | binary/generated/text treatment changes | Not routine | repository hygiene |
 | `.gitignore` | Ignore policy | Policy/config | toolchains, artifacts, caches, env files, or generated outputs change | Not routine | safety and hygiene |
@@ -842,7 +846,10 @@ The first commit MUST create the following files. “Routine read” means agent
 
 Status: Meta-Specified Now
 
-The initial harness must stay language-agnostic. When the repository specializes, the first change introducing that specialization MUST add the relevant module:
+The initial harness MUST stay language-agnostic. When the repository specializes, the first change introducing that specialization MUST add the relevant module:
+
+Specialization choices are `Implementation-defined`. The selected behavior MUST be documented in
+the durable artifact named by the relevant hook before downstream work depends on it.
 
 ### 19.1 Language or framework
 
@@ -968,10 +975,9 @@ Status: Concrete Now
 When an agent initializes an empty repository from this specification, it MUST:
 
 1. Create the tree in Section 7.
-2. Populate every required file with useful starter content, not empty placeholders, except `.gitkeep` files.
+2. Populate every REQUIRED file with useful starter content, not empty placeholders, except `.gitkeep` files.
 3. Ensure `AGENTS.md` remains short.
 4. Register `harness:check` in `docs/commands.md`.
 5. Make `scripts/check-harness.sh` executable when the filesystem supports it.
 6. Run `sh scripts/check-harness.sh`.
 7. Report created files, validation status, and any limitations.
-
