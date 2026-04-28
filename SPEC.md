@@ -110,15 +110,12 @@ The harness is in scope for this specification. The following are out of scope f
 
 ## 3. Normative Language
 
-Status: Concrete Now
+The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and
+`OPTIONAL` in this document are to be interpreted as described in RFC 2119.
 
-The words MUST, MUST NOT, SHOULD, SHOULD NOT, and MAY are normative.
-
-- MUST means the rule is required for a compliant harness.
-- SHOULD means the rule is expected unless there is a documented reason to do otherwise.
-- MAY means the rule is optional.
-
-When this document conflicts with another repository document, `spec.md` wins unless `spec.md` explicitly delegates that topic to another file.
+`Implementation-defined` means the behavior is part of the implementation contract, but this
+specification does not prescribe one universal policy. Implementations MUST document the selected
+behavior.
 
 ## 4. Harness Coverage Model
 
